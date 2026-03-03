@@ -1,0 +1,69 @@
+---
+title: "intro_to_quarto"
+format: html
+editor: visual
+---
+
+# Introduction
+
+<!-- -->
+
+## About the data
+
+-   Water sample data from Arctic Ocean
+-   Data downloaded from the Arctic Data Center: [Tweedie ADC data](https://arcticdata.io/catalog/view/doi:10.18739/A25T3FZ8X)
+
+## Setup
+
+```{r}
+#| warning: false
+library(readr)  
+library(here)    
+
+```
+
+## Read in data
+
+```{r}
+bg_chem <- read_csv(here("data/BGchem2008data.csv"))
+
+```
+
+# Analysis
+
+## a. Calculate summary statistics
+
+```{r}
+#| eval: false     # don't evaluate (don't run code chunk)
+#| echo: false     # don't include source code in
+
+colnames(bg_chem)
+head(bg_chem)
+
+# summary statistics
+summary(bg_chem)
+
+unique(bg_chem$Date)
+```
+
+## b. Calculate mean Redfield ratio
+
+```{r}
+# calculate means
+
+nitrate <- mean(bg_chem$NO3)
+nitrite <- mean(bg_chem$NO2)
+amm <- mean(bg_chem$NH4)
+phos <- mean(bg_chem$P)
+
+```
+
+## c. Plot Redfield ratio
+
+```{r}
+ratio <- (nitrate + nitrite + amm)/phos
+```
+
+Here is the ratio we calculated: `r round(ratio)`
+
+3.  Conclusion
