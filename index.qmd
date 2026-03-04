@@ -3,3 +3,13 @@ title: "index.qmd"
 format: html
 ---
 
+## Course lessongs
+
+- Intro to Quorto
+- yada yada
+
+## Another thing we did
+
+- practice I
+- practice II
+
